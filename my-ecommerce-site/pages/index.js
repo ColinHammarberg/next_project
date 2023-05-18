@@ -1,35 +1,44 @@
 import { request } from "../lib/datocms";
+import BoutiqueContainer from "./components/BoutiqueContainer";
+import Footer from "./components/Footer";
+import Header from "./Header";
+import './components/index.scss'
 
 const HOMEPAGE_QUERY = `{
-    allBoutiques {
-      id
-      name
-      boutiqueDetail {
-        ...on HeaderIdRecord{
-          smallTitle,
-          bigTitle,
-          buttonText,
-          description
+  allBoutiques {
+    id
+    name
+    header {
+      ...on HeaderIdRecord{
+        text,
+        href
+      }
+    }
+    products {
+      ...on ProductRecord {
+        name,
+        price,
+        image {
+          id
         }
       }
     }
-  
-    _allBoutiquesMeta {
-      count
-    }
+  }
   }`;
 
 export async function getStaticProps() {
   const data = await request({
     query: HOMEPAGE_QUERY,
-    variables: { limit: 10 }
   });
   return {
     props: { data }
   };
 }
 export default function Home({ data }) {
-  console.log('data', data);
-  return <div>{JSON.stringify(data, null, 2)}</div>;
+  return <div className="home-container">
+    <Header data={data} />
+    <BoutiqueContainer data={data} />
+    <Footer data={data}/>
+  </div>;
 }
   
