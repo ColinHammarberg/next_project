@@ -1,5 +1,6 @@
 import React from 'react';
 import { Router } from 'next/router';
+import ProductsContextProvider from '@/utils/ProductsContext';
 
 function MyApp({ Component, pageProps }) {
   React.useEffect(() => {
@@ -14,7 +15,11 @@ function MyApp({ Component, pageProps }) {
     };
   }, []);
 
-  return <Component {...pageProps} />;
+  return (
+    <ProductsContextProvider>
+      <Component {...pageProps} />
+    </ProductsContextProvider>
+  );
 }
 
 export default MyApp;

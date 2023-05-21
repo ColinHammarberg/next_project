@@ -1,0 +1,32 @@
+.footer {
+    width: 100%;
+    .footer-content {
+        padding: 50px 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        flex-flow: wrap;
+        gap: 20px;
+        .col {
+            max-width: 300px;
+            &:nth-child(3) {
+                width: 150px;
+            }
+            .text {
+                color: rgba(0, 0, 0, 0.5);
+                font-size: 14px;
+            }
+            .c-item {
+                display: flex;
+                margin-bottom: 10px;
+            }
+            a {
+                &.text {
+                    display: block;
+                    margin-bottom: 10px;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}

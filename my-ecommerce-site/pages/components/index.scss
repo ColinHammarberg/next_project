@@ -1,27 +1,69 @@
-div {
-    display: unset;
+body {
+  margin: 0;
 }
+
 .home-container {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh; /* Ensures the container takes up the full height of the viewport */
-  }
-  
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+
   .content-container {
-    display: flex;
-    flex-grow: 1;
-    align-items: center;
-    justify-content: center;
+    .hero-banner {
+      padding: 40px 0;
+      position: relative;
+      background-image: linear-gradient(to right, #8e2de2, #4a00e0);
+      width: 100%;
+      height: 500px;
+
+      .content {
+        height: 100%;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        flex-direction: column-reverse;
+        max-width: calc(100% - 20px);
+        margin: 0 auto;
+        position: relative;
+
+        .banner-img {
+          position: relative;
+          z-index: 9;
+          width: 200px;
+          margin-bottom: 20px;
+        }
+
+        .text-content {
+          color: white;
+          text-align: center;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+
+          h1 {
+            font-size: 80px;
+            font-weight: 700;
+            line-height: 1;
+            color: white;
+            margin-bottom: 20px;
+
+          }
+
+          p {
+            max-width: 300px;
+            font-size: 14px;
+            line-height: 20px;
+            margin-bottom: 20px;
+
+          }
+
+          .ctas {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+          }
+        }
+      }
+    }
   }
-  
-  .container {
-    padding: 2rem;
-    text-align: center;
-  }
-  
-  .footer {
-    padding: 1rem;
-    text-align: center;
-    background-color: #f5f5f5;
-    color: #999;
-  }
+}
