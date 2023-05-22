@@ -4,16 +4,25 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { useRouter } from 'next/router';
 import './Header.scss';
 import { ProductsContext } from '@/utils/ProductsContext';
-import CustomButton from './CustomButton';
 
 export default function Header({ data }) {
-  const headerDetails = data?.allBoutiques[0]?.header;
   const router = useRouter();
   const { cartItems } = useContext(ProductsContext);
 
-  if (!headerDetails) {
-    return null;
-  }
+  const headerItems = [
+    {
+      text: 'Products',
+      href: '/Products'
+    },
+    {
+      text: 'Contact Us',
+      href: '/Contact'
+    },
+    {
+      text: 'About Us',
+      href: '/About'
+    },
+  ]
 
   const handleNavigation = (href) => {
     router.push({
@@ -29,7 +38,7 @@ export default function Header({ data }) {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }} onClick={() => handleNavigation('/')}>
             Seasoned Cellars 
           </Typography>
-          {headerDetails.map((item) => (
+          {headerItems.map((item) => (
             <Button
               key={item.text}
               onClick={() => handleNavigation(item.href)}
@@ -38,7 +47,12 @@ export default function Header({ data }) {
             {item.text}
           </Button>
           ))}
-          <IconButton disabled={cartItems.length <= 0} onClick={() => handleNavigation('/Checkout')}><ShoppingCartIcon className={cartItems.length > 0 && 'active'} /></IconButton>
+          <div className="cart">
+          <IconButton disabled={cartItems?.length <= 0} onClick={() => handleNavigation('/Checkout')} className={cartItems?.length > 0 && 'active'}>
+              <ShoppingCartIcon />
+              <span className="cart-items">{cartItems?.length}</span>
+          </IconButton>
+          </div>
         </Toolbar>
       </AppBar>
     </div>

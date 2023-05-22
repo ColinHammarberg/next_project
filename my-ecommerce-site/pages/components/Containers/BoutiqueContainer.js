@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import React from 'react';
-import CustomButton from './CustomButton';
+import CustomButton from '../Buttons/CustomButton';
 
 export default function BoutiqueContainer({ data }) {
   const headerDetails = data?.allBoutiques[0];

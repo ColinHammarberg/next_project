@@ -1,29 +1,33 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import './components/ProductLayout.scss';
-import Header from './components/Header';
+import './style/Products.scss';
+import Header from './components/Header/Header';
 import { ProductsContext } from '../utils/ProductsContext';
-import SingleProduct from './SingleProduct';
-import ProductItem from './components/ProductItem';
+import SingleProduct from './components/Product/SingleProduct';
+import ProductItem from './components/Product/ProductItem';
 
 export default function Products() {
   const router = useRouter();
   const data = router.query.data;
   const [isLoading, setIsLoading] = useState(true);
   const [parsedData, setParsedData] = useState(null);
-  const { handleAddToCart } = useContext(ProductsContext);
+  const { handleAddToCart, handleRemoveFromCart } = useContext(ProductsContext);
   const [showSingleProduct, setShowSingleProduct] = useState(null);
 
   useEffect(() => {
-    if (data) {
-      try {
-        const parsedDataObject = JSON.parse(data);
-        setParsedData(parsedDataObject);
-      } catch (error) {
-        console.error('Error parsing data:', error);
+    const fetchData = async () => {
+      if (data) {
+        try {
+          const parsedDataObject = JSON.parse(data);
+          setParsedData(parsedDataObject);
+        } catch (error) {
+          console.error('Error parsing data:', error);
+        }
+        setIsLoading(false);
       }
-      setIsLoading(false);
-    }
+    };
+
+    fetchData();
   }, [data]);
 
   if (isLoading) {
@@ -33,7 +37,7 @@ export default function Products() {
   const productDetails = parsedData?.allBoutiques[0]?.products;
 
   const handleOnClickProduct = (productName, productId) => {
-    setShowSingleProduct({ productName: productName, productId: productId });
+    setShowSingleProduct({ productName, productId });
   };
 
   const handleOnClose = () => {
@@ -42,24 +46,24 @@ export default function Products() {
 
   return (
     <>
-        <Header data={parsedData} />
-        <section className="slider">
-            {productDetails.map((item) => (
-                <ProductItem
-                  key={item.productId}
-                  productName={item.name}
-                  productPrice={item.price}
-                  imageSrc={item.productImage.url}
-                  productId={item.productId}
-                  productDetails={productDetails}
-                  handleOnClickProduct={handleOnClickProduct}
-                  handleAddToCart={handleAddToCart}
-                />
-            ))}
-          {showSingleProduct && (
-            <SingleProduct showSingleProduct={showSingleProduct} allProducts={productDetails} handleOnClose={handleOnClose} />
-          )}
-        </section>
+      <Header data={parsedData} />
+      <section className="products">
+        {productDetails.map((item) => (
+          <ProductItem
+            key={item.productId}
+            productName={item.name}
+            productPrice={item.price}
+            imageSrc={item.productImage.url}
+            productId={item.productId}
+            productDetails={productDetails}
+            handleOnClickProduct={handleOnClickProduct}
+            handleRemoveFromCart={handleRemoveFromCart}
+          />
+        ))}
+        {showSingleProduct && (
+          <SingleProduct showSingleProduct={showSingleProduct} allProducts={productDetails} handleAddToCart={handleAddToCart} handleOnClose={handleOnClose} />
+        )}
+      </section>
     </>
   );
 }

@@ -1,8 +1,8 @@
 import { request } from "../lib/datocms";
-import BoutiqueContainer from "./components/BoutiqueContainer";
-import Footer from "./components/folder/Footer";
-import Header from "./components/Header";
-import './components/index.scss'
+import BoutiqueContainer from "./components/Containers/BoutiqueContainer";
+import Footer from "./components/Footer/Footer";
+import Header from "./components/Header/Header";
+import './style/index.scss'
 import ProductsContextProvider from "../utils/ProductsContext";
 
 const HOMEPAGE_QUERY = `{
@@ -32,6 +32,9 @@ const HOMEPAGE_QUERY = `{
         url
       }
     }
+    footer {
+      aboutus
+    }
   }
   }`;
 
@@ -45,7 +48,7 @@ export async function getStaticProps() {
 }
 export default function Home({ data }) {
   return <div className="home-container">
-    <ProductsContextProvider>
+    <ProductsContextProvider data={data} >
       <Header data={data} />
       <BoutiqueContainer data={data} />
       <Footer data={data}/>

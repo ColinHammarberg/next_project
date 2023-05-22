@@ -5,7 +5,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     width: 300px;
-    height: 500px;
+    min-height: 280px;
     border-radius: 8px;
     z-index: 9999;
     background-color: #ffffff;
@@ -17,22 +17,25 @@
     .close-btn {
         float: right;
         right: 0;
-    }
+        margin-top: -20px;
+        margin-right: -10px;
 
-    .image {
-        width: 150px;
-        height: 200px;
-        margin-top: 20px;
+        &:hover {
+            background-color: transparent;
+        }
     }
 
     .information {
         font-size: 15px;
+        display: grid;
         text-align: center;
+        gap: 10px;
         margin: 8px;
-        margin-top: 60px;
+        margin-top: 30px;
 
         .name {
             font-weight: bold;
+            text-transform: uppercase;
         }
 
         .price {
@@ -41,6 +44,22 @@
 
         .desc {
             font-size: 13px;
+        }
+
+        .in-stock {
+            font-size: 13px;
+
+            .stock {
+                color: #4dc031;
+            }
+
+            .out-of-stock {
+                color: #f52424;
+            }
+        }
+
+        .add-to-cart {
+            margin-top: 20px;
         }
     }
 }

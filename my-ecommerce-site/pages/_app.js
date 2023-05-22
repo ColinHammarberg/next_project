@@ -1,5 +1,7 @@
 import React from 'react';
 import { Router } from 'next/router';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import ProductsContextProvider from '@/utils/ProductsContext';
 
 function MyApp({ Component, pageProps }) {
@@ -18,6 +20,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <ProductsContextProvider>
       <Component {...pageProps} />
+      <ToastContainer />
     </ProductsContextProvider>
   );
 }

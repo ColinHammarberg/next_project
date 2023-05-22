@@ -1,0 +1,43 @@
+.header {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    border-bottom: 1px solid #000000 !important;
+    width: 100% !important;
+    font-weight: bold;
+
+    .cart {
+        margin-left: 30px;
+
+        .MuiIconButton-root {
+            color: #000;
+            &:hover {
+                background-color: #fff;
+            }
+        }
+
+        .active {
+            .MuiSvgIcon-root {
+                color: #8e2de2;
+
+                &:hover {
+                    background-color: #fff;
+                }
+            }
+        }
+
+        .cart-items {
+            color: #000;
+            font-size: 12px;
+            text-decoration: none;
+        }
+    }
+
+    .MuiButton-root {
+        color: #000000;
+
+        &:hover {
+            color: #8e2de2;
+            background-color: transparent;
+        }
+    }
+}

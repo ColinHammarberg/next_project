@@ -1,0 +1,8 @@
+.products {
+  background-color: #ffffff;
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  place-items: center;
+  grid-gap: 2rem;
+}

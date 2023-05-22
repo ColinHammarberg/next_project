@@ -1,9 +1,9 @@
 // SingleProduct.jsx
 import React, { Component } from "react";
-import "./components/SingleProduct.scss";
-import Image from "next/image";
+import "./SingleProduct.scss";
 import { IconButton } from "@mui/material";
 import CloseIcon from '@mui/icons-material/Close';
+import CustomButton from "../Buttons/CustomButton";
 
 class SingleProduct extends Component {
   constructor(props) {
@@ -13,6 +13,7 @@ class SingleProduct extends Component {
       product: this.props.showSingleProduct,
       allProducts: this.props.allProducts
     };
+    this.handleOnClickAddToCart = this.handleOnClickAddToCart.bind(this);
   }
 
   componentDidMount() {
@@ -23,17 +24,11 @@ class SingleProduct extends Component {
     }
   }
 
-  decrement = () => {
-    this.setState((prevState) => {
-      if (prevState.quantity === 1) return { quantity: 1 };
-      return { quantity: prevState.quantity - 1 };
-    });
-  };
-
-  increment = () => {
-    this.setState((prevState) => {
-      return { quantity: prevState.quantity + 1 };
-    });
+  handleOnClickAddToCart() {
+    const { product, allProducts } = this.state;
+    setTimeout(() => {
+      this.props.handleAddToCart(product.productId, allProducts)
+    }, 500);
   };
 
   render() {
@@ -44,18 +39,22 @@ class SingleProduct extends Component {
         <div className="single-product-main-content">
           <div className="layout">
             <div className="single-product-page">
-              <div className="image">
-                <Image src={product?.productImage?.url} alt="Product" />
-              </div>
               <div className="information">
                 <div className="name">{product?.name}</div>
                 <div className="price">Price: ${product?.price}</div>
-                <span className="desc">{product?.productDescription}</span>
-
-                <div className="cart-buttons">
-                  <div className="InStock">
-                    <span>{product?.instock && 'The wine is in stock'}</span>
+                <div className="in-stock">
+                <span>
+                  The wine is
+                  {product?.instock ? (
+                    <span className="stock"> in stock</span>
+                  ) : (
+                    <span className="out-of-stock"> out-of-stock</span>
+                  )}
+                </span>
                   </div>
+                <span className="desc">{product?.productDescription}</span>
+                <div className="add-to-cart">
+                  <CustomButton onClick={this.handleOnClickAddToCart} title="Add to cart" />
                 </div>
               </div>
             </div>

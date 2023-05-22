@@ -1,0 +1,33 @@
+.card {
+    position: relative;
+    width: 17rem;
+    height: 23rem;
+    background-color: #fff;
+    color: #000;
+    border-radius: 4px;
+    border: .1rem solid transparent;
+    overflow: hidden;
+    transition: .5s ease-in-out;
+
+    .card-image {
+        background-color: #eeecec;
+        display: flex;
+        justify-content: center;
+        width: 250px;
+        height: 250px;
+        align-items: center;
+
+        .card-img {
+            width: 200px;
+            height: 200px;
+        }
+    }
+
+    .product-content {
+        .card-title {
+            font-size: 15px;
+            font-weight: bold;
+            text-transform: capitalize;
+        }
+    }
+}
