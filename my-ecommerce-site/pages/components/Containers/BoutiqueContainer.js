@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import React from 'react';
-import CustomButton from '../Buttons/CustomButton';
 
 export default function BoutiqueContainer({ data }) {
   const headerDetails = data?.allBoutiques[0];
@@ -20,10 +19,6 @@ export default function BoutiqueContainer({ data }) {
                       Seasoned cellars is a fine wine supplier located in Sweden. 
                       Enjoy the most prestigious wines the word has to offer.
                     </p>
-                    <div className="ctas">
-                      <CustomButton title="Read More" onClick={""} />
-                      <CustomButton title="Shop Now" onClick={""} />
-                    </div>
                 </div>
                 <Image className="banner-img" />
             </div>
