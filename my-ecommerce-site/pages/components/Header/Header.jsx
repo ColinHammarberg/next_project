@@ -11,12 +11,8 @@ export default function Header({ data }) {
 
   const headerItems = [
     {
-      text: 'Products',
+      text: 'Shop Wines',
       href: '/Products'
-    },
-    {
-      text: 'Contact Us',
-      href: '/Contact'
     },
     {
       text: 'About Us',
