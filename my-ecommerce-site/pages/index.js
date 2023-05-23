@@ -3,7 +3,6 @@ import BoutiqueContainer from "./components/Containers/BoutiqueContainer";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import './style/index.scss'
-import ProductsContextProvider from "../utils/ProductsContext";
 
 const HOMEPAGE_QUERY = `{
   allBoutiques {
@@ -48,11 +47,9 @@ export async function getStaticProps() {
 }
 export default function Home({ data }) {
   return <div className="home-container">
-    <ProductsContextProvider data={data} >
       <Header data={data} />
       <BoutiqueContainer data={data} />
       <Footer data={data}/>
-    </ProductsContextProvider>
   </div>;
 }
   

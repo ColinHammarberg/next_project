@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import React from 'react';
 
 export default function BoutiqueContainer({ data }) {
@@ -20,7 +19,6 @@ export default function BoutiqueContainer({ data }) {
                       Enjoy the most prestigious wines the word has to offer.
                     </p>
                 </div>
-                <Image className="banner-img" />
             </div>
         </div>
     </div>

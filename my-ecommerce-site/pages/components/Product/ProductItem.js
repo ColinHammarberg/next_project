@@ -1,10 +1,9 @@
 import React from 'react';
 import './ProductItem.scss';
 import Image from 'next/image';
-import CustomButton from '../Buttons/CustomButton';
 
 export default function ProductItem(props) {
-  const { productName, productPrice, imageSrc, handleOnClickProduct, handleRemoveFromCart, productId } = props;
+  const { productName, productPrice, imageSrc, handleOnClickProduct, productId } = props;
 
   const handleOnClick = () => {
     setTimeout(() => {
