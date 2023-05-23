@@ -1,0 +1,30 @@
+.confirm-order {
+    text-align: center;
+
+    .dialog-content {
+        margin-bottom: 40px;
+    }
+
+    .order-btn {
+        height: 80px;
+        width: 100%;
+
+        .custom-btn {
+            width: 50%;
+            height: 80px;
+            border-radius: 0;
+            font-size: 20px;
+            font-weight: 700;
+
+            &.confirm {
+                background-color: #000;
+                color: #fff;
+            }
+
+            &.cancel {
+                background-color: #d8d8d8 !important;
+                color: #000 !important;
+            }
+        }
+    }
+}

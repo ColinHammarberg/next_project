@@ -2,6 +2,27 @@
   .w-full {
     padding: 16px;
 
+    @keyframes rotateAnimation {
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .loading-screen {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      .MuiSvgIcon-root {
+        animation: rotateAnimation 2s linear infinite;
+        font-size: 60px;
+      }
+    }
+
     .cart-empty-container {
       align-items: center;
       display: flex;
@@ -88,6 +109,11 @@
             border-top: 1px solid black;
           }
         }
+      }
+    }
+    .custom-btn {
+      &:hover {
+        background-color: #000;
       }
     }
   }

@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import LoopIcon from '@mui/icons-material/Loop';
 import Cart from './components/Checkout/Cart';
 import { ProductsContext } from '@/utils/ProductsContext';
 import Header from './components/Header/Header';
@@ -6,10 +7,12 @@ import { useRouter } from 'next/router';
 import './style/Checkout.scss';
 import { Typography } from '@mui/material';
 import CustomButton from './components/Buttons/CustomButton';
+import ConfirmOrder from './components/Checkout/ConfirmOrder';
 
 export default function CheckOut() {
   const { cartItems, cartValueTotal, handleRemoveFromCart } = useContext(ProductsContext);
   const [parsedData, setParsedData] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
   const data = router.query.data;
   useEffect(() => {
@@ -26,6 +29,32 @@ export default function CheckOut() {
 
     fetchData();
   }, [data]);
+
+  async function handleOnClickCheckOut() {
+    const { isConfirmed } = await ConfirmOrder.show()
+    if (!isConfirmed) {
+      return;
+    } else {
+      setIsLoading(true);
+      await new Promise((resolve) => setTimeout(resolve, 3500));
+      router.push({
+        pathname: '/Confirmation',
+      });
+      setIsLoading(false);
+    }
+  }
+
+  if (isLoading) {
+    return (
+      <div className="checkout">
+        <div className="w-full">
+          <div className="loading-screen">
+            <LoopIcon />
+          </div>
+        </div>
+      </div>
+    )
+  }
 
   return (
     <div className="checkout">
@@ -53,9 +82,10 @@ export default function CheckOut() {
                       </div>
                       <Typography className="cart-summary-description">
                         The subtotal reflects the total price of your order.
+                        You will pay the order once it has arrived.
                       </Typography>
                     </div>
-                    <CustomButton title="Checkout" onClick="" />
+                    <CustomButton title="Checkout" onClick={handleOnClickCheckOut} />
                   </div>
                 </div>
               </>

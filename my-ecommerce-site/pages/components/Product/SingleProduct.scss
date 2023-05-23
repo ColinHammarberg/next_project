@@ -60,6 +60,11 @@
 
         .add-to-cart {
             margin-top: 20px;
+            .custom-btn {
+                &:hover {
+                    background-color: #000;
+                }
+            }
         }
     }
 }

@@ -35,7 +35,7 @@ export default function Header({ data }) {
     <div>
       <AppBar position="static" className="header">
         <Toolbar>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }} onClick={() => handleNavigation('/')}>
+          <Typography sx={{ flexGrow: 1 }} onClick={() => handleNavigation('/')}>
             Seasoned Cellars 
           </Typography>
           {headerItems.map((item) => (
