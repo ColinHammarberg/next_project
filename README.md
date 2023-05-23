@@ -1,7 +1,5 @@
 # next_project
 
-# next_project
-
 # TECHNOLOGIES USED
 
 ### NextJS
