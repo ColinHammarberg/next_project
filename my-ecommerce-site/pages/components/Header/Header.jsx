@@ -11,6 +11,10 @@ export default function Header({ data }) {
 
   const headerItems = [
     {
+      text: 'Home',
+      href: '/'
+    },
+    {
       text: 'Shop Wines',
       href: '/Products'
     },
@@ -31,7 +35,7 @@ export default function Header({ data }) {
     <div>
       <AppBar position="static" className="header">
         <Toolbar>
-          <Typography sx={{ flexGrow: 1 }} onClick={() => handleNavigation('/')}>
+          <Typography sx={{ flexGrow: 1 }}>
             Seasoned Cellars 
           </Typography>
           {headerItems.map((item) => (
@@ -39,9 +43,9 @@ export default function Header({ data }) {
               key={item.text}
               onClick={() => handleNavigation(item.href)}
               color="inherit"
-          >
-            {item.text}
-          </Button>
+            >
+              {item.text}
+            </Button>
           ))}
           <div className="cart">
           <IconButton disabled={cartItems?.length <= 0} onClick={() => handleNavigation('/Checkout')} className={cartItems?.length > 0 && 'active'}>

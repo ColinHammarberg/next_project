@@ -8,11 +8,16 @@ import './style/Checkout.scss';
 import { Typography } from '@mui/material';
 import CustomButton from './components/Buttons/CustomButton';
 import ConfirmOrder from './components/Checkout/ConfirmOrder';
+import { useLocalStorage } from '@/utils/CustomHooks';
 
 export default function CheckOut() {
   const { cartItems, cartValueTotal, handleRemoveFromCart } = useContext(ProductsContext);
   const [parsedData, setParsedData] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [orderDetails, setOrderDetails] = useLocalStorage(
+    `orderDetails`,
+    {}
+  );
   const router = useRouter();
   const data = router.query.data;
   useEffect(() => {
@@ -36,6 +41,7 @@ export default function CheckOut() {
       return;
     } else {
       setIsLoading(true);
+      setOrderDetails({ cartItems })
       await new Promise((resolve) => setTimeout(resolve, 3500));
       router.push({
         pathname: '/Confirmation',

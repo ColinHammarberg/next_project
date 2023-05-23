@@ -14,7 +14,7 @@
     align-items: center;
     justify-content: center;
 
-    .close-btn {
+    .MuiIconButton-root {
         float: right;
         right: 0;
         margin-top: -20px;
@@ -60,6 +60,7 @@
 
         .add-to-cart {
             margin-top: 20px;
+
             .custom-btn {
                 &:hover {
                     background-color: #000;

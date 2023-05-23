@@ -35,7 +35,7 @@ class SingleProduct extends Component {
     const { product } = this.state;
     return (
       <div className="single-product-popup">
-        <IconButton className="close-btn" onClick={this.props.handleOnClose}><CloseIcon /></IconButton>
+          <IconButton onClick={this.props.handleOnClose}><CloseIcon /></IconButton>
         <div className="single-product-main-content">
           <div className="layout">
             <div className="single-product-page">
@@ -54,7 +54,7 @@ class SingleProduct extends Component {
                   </div>
                 <span className="desc">{product?.productDescription}</span>
                 <div className="add-to-cart">
-                  <CustomButton onClick={this.handleOnClickAddToCart} title="Add to cart" />
+                  <CustomButton onClick={this.handleOnClickAddToCart} disabled={!product.instock} title="Add to cart" />
                 </div>
               </div>
             </div>

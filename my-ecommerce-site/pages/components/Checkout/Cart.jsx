@@ -4,7 +4,7 @@ import './Cart.scss'
 import CustomButton from '../Buttons/CustomButton';
 import { Typography } from '@mui/material';
 export default function Cart(props) {
-  const { imageSrc, productName, productPrice, productId, handleRemoveFromCart } = props;
+  const { imageSrc, productName, productPrice, productId, handleRemoveFromCart, confirmationPage } = props;
   const handleOnRemoveItem = () => {
     setTimeout(() => {
       handleRemoveFromCart(productId);
@@ -30,10 +30,14 @@ export default function Cart(props) {
             ${productPrice}
           </Typography>
         </div>
-        <div className="remove-btn">
-          <CustomButton title="Remove" onClick={handleOnRemoveItem} />
-        </div>
-        <Typography className="remove-helper-text">Item can be removed by clicking the remove button</Typography>
+        {!confirmationPage && 
+          <div className="remove-btn">
+            <CustomButton title="Remove" onClick={handleOnRemoveItem} />
+          </div>
+        }
+        {!confirmationPage && 
+          <Typography className="remove-helper-text">Item can be removed by clicking the remove button</Typography>
+        }
       </div>
     </div>
     </>
