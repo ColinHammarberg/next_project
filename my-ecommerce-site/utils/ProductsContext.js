@@ -30,21 +30,24 @@ const ProductsContextProvider = ({ children }) => {
     window.scrollTo(0, 0);
   }, [location]);
 
-  const handleAddToCart = (productId, allProducts) => {
+  const handleAddToCart = (productId, allProducts, productName) => {
     const foundProducts = allProducts.filter((p) => p.productId === productId);
     if (cartItems.some((item) => item.productId === productId)) {
       toast.error('Only 1 bottle per wine allowed per person');
     } else if (foundProducts.length > 0) {
       setCartItems((prevCartItems) => [...prevCartItems, ...foundProducts]);
-      toast.success('Item added to cart');
+      toast.success(`You've added ${productName} to your cart`);
     }
   };
 
-  const handleRemoveFromCart = (productId) => {
+  const handleRemoveFromCart = (productId, productName) => {
     const updatedItems = cartItems.filter((item) => item.productId !== productId);
     setCartItems(updatedItems);
-    toast.success('Item was successfully removed from cart');
-    console.log('cartItems', cartItems);
+    const removedProduct = cartItems.find((item) => item.productId === productId);
+    console.log('removedProduct', removedProduct);
+    if (removedProduct) {
+      toast.success(`${productName} was successfully removed from your cart`);
+    }
   };
 
   return (

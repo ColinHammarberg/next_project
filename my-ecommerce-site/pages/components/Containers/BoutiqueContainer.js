@@ -22,7 +22,6 @@ export default function BoutiqueContainer({ data }) {
           </div>
         </div>
       </div>
-      {/* <Image /> */}
     </div>
   );
 }

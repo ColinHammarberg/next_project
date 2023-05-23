@@ -14,7 +14,7 @@ export default function Cart(props) {
   } = props;
   const handleOnRemoveItem = () => {
     setTimeout(() => {
-      handleRemoveFromCart(productId);
+      handleRemoveFromCart(productId, productName);
     }, 300);
   };
 

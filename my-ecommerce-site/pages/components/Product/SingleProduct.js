@@ -27,7 +27,7 @@ class SingleProduct extends Component {
   handleOnClickAddToCart() {
     const { product, allProducts } = this.state;
     setTimeout(() => {
-      this.props.handleAddToCart(product.productId, allProducts);
+      this.props.handleAddToCart(product.productId, allProducts, product.name);
     }, 500);
   }
 
