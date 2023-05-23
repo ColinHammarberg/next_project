@@ -54,24 +54,24 @@ class ConfirmOrder extends PureComponent {
 
   handleCancel() {
     this.setState({ isOpen: false }, () => {
-        ConfirmOrder.destroy({
-          isConfirmed: false,
-        });
+      ConfirmOrder.destroy({
+        isConfirmed: false,
+      });
     });
   }
 
   handleHistoryStateChanged() {
     this.setState({ isOpen: false }, () => {
-        ConfirmOrder.destroy();
+      ConfirmOrder.destroy();
     });
   }
 
   handleConfirm() {
-      this.setState({ isOpen: false }, () => {
-        ConfirmOrder.destroy({
-            isConfirmed: true,
-          });
+    this.setState({ isOpen: false }, () => {
+      ConfirmOrder.destroy({
+        isConfirmed: true,
       });
+    });
   }
 
   render() {
@@ -79,30 +79,26 @@ class ConfirmOrder extends PureComponent {
       return null;
     }
     return (
-    <Dialog
-      className="confirm-order"
-      open
-      maxWidth="sm"
-    >
-      <DialogContent className="dialog-content">
-      <h1 className="title">Confirm Order</h1>
-      <p>Are you sure that you would like to place you order?</p>
-      </DialogContent>
-      <div className="order-btn">
-        <CustomButton
+      <Dialog className="confirm-order" open maxWidth="sm">
+        <DialogContent className="dialog-content">
+          <h1 className="title">Confirm Order</h1>
+          <p>Are you sure that you would like to place you order?</p>
+        </DialogContent>
+        <div className="order-btn">
+          <CustomButton
             key="cancelButton"
             onClick={this.handleCancel}
             className="cancel"
             title="Cancel"
-        />
-        <CustomButton
+          />
+          <CustomButton
             key="confirmButton"
             onClick={this.handleConfirm}
             className="confirm"
             title="Confirm"
-        />
-      </div>
-    </Dialog>
+          />
+        </div>
+      </Dialog>
     );
   }
 }

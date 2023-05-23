@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Router } from 'next/router';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -24,5 +25,10 @@ function MyApp({ Component, pageProps }) {
     </ProductsContextProvider>
   );
 }
+
+MyApp.propTypes = {
+  Component: PropTypes.oneOfType([PropTypes.func, PropTypes.element, PropTypes.instanceOf(Object)]),
+  pageProps: PropTypes.instanceOf(Object)
+};
 
 export default MyApp;

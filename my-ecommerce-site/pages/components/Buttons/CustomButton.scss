@@ -4,8 +4,14 @@
     outline: none !important;
     height: 40px;
     border-radius: 50px;
+    font-weight: bold;
     color: #fff;
     cursor: pointer;
     background-color: #000000;
     transition: all ease 0.3s;
+}
+
+.MuiButton-root.Mui-disabled {
+    background-color: rgba(0, 0, 0, 0.26);
+    color: rgba(0, 0, 0, 0.4);
 }

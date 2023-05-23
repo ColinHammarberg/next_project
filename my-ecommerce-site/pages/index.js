@@ -1,8 +1,10 @@
-import { request } from "../lib/datocms";
-import BoutiqueContainer from "./components/Containers/BoutiqueContainer";
-import Footer from "./components/Footer/Footer";
-import Header from "./components/Header/Header";
-import './style/index.scss'
+import React from 'react';
+import PropTypes from 'prop-types';
+import { request } from '../lib/datocms';
+import BoutiqueContainer from './components/Containers/BoutiqueContainer';
+import Footer from './components/Footer/Footer';
+import Header from './components/Header/Header';
+import './style/index.scss';
 
 const HOMEPAGE_QUERY = `{
   allBoutiques {
@@ -31,9 +33,6 @@ const HOMEPAGE_QUERY = `{
         url
       }
     }
-    footer {
-      aboutus
-    }
   }
   }`;
 
@@ -42,14 +41,19 @@ export async function getStaticProps() {
     query: HOMEPAGE_QUERY,
   });
   return {
-    props: { data }
+    props: { data },
   };
 }
 export default function Home({ data }) {
-  return <div className="home-container">
+  return (
+    <div className="home-container">
       <Header data={data} />
       <BoutiqueContainer data={data} />
-      <Footer data={data}/>
-  </div>;
+      {/* <Footer data={data} /> */}
+    </div>
+  );
 }
-  
+
+Home.propTypes = {
+  data: PropTypes.instanceOf(Object),
+};

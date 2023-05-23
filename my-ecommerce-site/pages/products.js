@@ -61,7 +61,12 @@ export default function Products() {
           />
         ))}
         {showSingleProduct && (
-          <SingleProduct showSingleProduct={showSingleProduct} allProducts={productDetails} handleAddToCart={handleAddToCart} handleOnClose={handleOnClose} />
+          <SingleProduct
+            showSingleProduct={showSingleProduct}
+            allProducts={productDetails}
+            handleAddToCart={handleAddToCart}
+            handleOnClose={handleOnClose}
+          />
         )}
       </section>
     </>

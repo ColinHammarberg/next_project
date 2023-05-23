@@ -10,13 +10,14 @@
 
         .MuiIconButton-root {
             color: #000;
+
             &:hover {
                 background-color: #fff;
             }
         }
 
         .Mui-disabled {
-            color: rgba(0,0,0,0.6);
+            color: rgba(0, 0, 0, 0.6);
         }
 
         .active {

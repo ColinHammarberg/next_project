@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import PropTypes from 'prop-types';
 import { AppBar, Toolbar, Typography, Button, IconButton } from '@mui/material';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { useRouter } from 'next/router';
@@ -12,22 +13,22 @@ export default function Header({ data }) {
   const headerItems = [
     {
       text: 'Home',
-      href: '/'
+      href: '/',
     },
     {
       text: 'Shop Wines',
-      href: '/Products'
+      href: '/Products',
     },
-    {
-      text: 'About Us',
-      href: '/About'
-    },
-  ]
+    // {
+    //   text: 'About Us',
+    //   href: '/About',
+    // },
+  ];
 
   const handleNavigation = (href) => {
     router.push({
       pathname: href,
-      query: { data: JSON.stringify(data) } // Pass the data as a plain JavaScript object
+      query: { data: JSON.stringify(data) }, // Pass the data as a plain JavaScript object
     });
   };
 
@@ -35,26 +36,28 @@ export default function Header({ data }) {
     <div>
       <AppBar position="static" className="header">
         <Toolbar>
-          <Typography sx={{ flexGrow: 1 }}>
-            Seasoned Cellars 
-          </Typography>
+          <Typography sx={{ flexGrow: 1 }}>Seasoned Cellars</Typography>
           {headerItems.map((item) => (
-            <Button
-              key={item.text}
-              onClick={() => handleNavigation(item.href)}
-              color="inherit"
-            >
+            <Button key={item.text} onClick={() => handleNavigation(item.href)} color="inherit">
               {item.text}
             </Button>
           ))}
           <div className="cart">
-          <IconButton disabled={cartItems?.length <= 0} onClick={() => handleNavigation('/Checkout')} className={cartItems?.length > 0 && 'active'}>
+            <IconButton
+              disabled={cartItems?.length <= 0}
+              onClick={() => handleNavigation('/Checkout')}
+              className={cartItems?.length > 0 && 'active'}
+            >
               <ShoppingCartIcon />
               <span className="cart-items">{cartItems?.length}</span>
-          </IconButton>
+            </IconButton>
           </div>
         </Toolbar>
       </AppBar>
     </div>
   );
 }
+
+Header.propTypes = {
+  data: PropTypes.instanceOf(Object),
+};

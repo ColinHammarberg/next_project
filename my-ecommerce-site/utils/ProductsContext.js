@@ -1,6 +1,7 @@
-import { useRouter } from "next/router";
-import { useEffect, createContext, useState } from "react";
-import { toast } from "react-toastify";
+import React, { useRouter } from 'next/router';
+import PropTypes from 'prop-types';
+import { useEffect, createContext, useState } from 'react';
+import { toast } from 'react-toastify';
 
 export const ProductsContext = createContext();
 
@@ -12,18 +13,18 @@ const ProductsContextProvider = ({ children }) => {
   const location = useRouter();
 
   useEffect(() => {
-    let count = cartItems.length;
+    const count = cartItems.length;
     setCartCount(count);
-  
+    console.log('cartItems', cartItems);
+
     let subTotal = 0;
-  
+
     cartItems.forEach((item) => {
       subTotal += parseFloat(item.price); // Convert item price to a number
     });
-  
+
     setCartValueTotal(subTotal);
   }, [cartItems]);
-  
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -62,6 +63,10 @@ const ProductsContextProvider = ({ children }) => {
       {children}
     </ProductsContext.Provider>
   );
+};
+
+ProductsContextProvider.propTypes = {
+  children: PropTypes.instanceOf(Array),
 };
 
 export default ProductsContextProvider;
