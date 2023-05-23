@@ -47,7 +47,7 @@ export default function Products() {
   return (
     <>
       <Header data={parsedData} />
-      <section className="products">
+      <div className="products">
         {productDetails.map((item) => (
           <ProductItem
             key={item.productId}
@@ -68,7 +68,7 @@ export default function Products() {
             handleOnClose={handleOnClose}
           />
         )}
-      </section>
+      </div>
     </>
   );
 }

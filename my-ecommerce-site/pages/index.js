@@ -10,12 +10,6 @@ const HOMEPAGE_QUERY = `{
   allBoutiques {
     id
     name
-    header {
-      ...on HeaderIdRecord{
-        text,
-        href
-      }
-    }
     products {
       ...on ProductRecord {
         name,
@@ -26,11 +20,6 @@ const HOMEPAGE_QUERY = `{
         productId,
         productDescription,
         instock
-      }
-    }
-    logotype {
-      logotype {
-        url
       }
     }
   }

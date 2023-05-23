@@ -9,22 +9,10 @@
         gap: 60px;
 
         .col {
-            &.left {
-                float: left;
-            }
-
-            &.right {
-                float: right;
-            }
 
             .text {
                 color: rgba(0, 0, 0, 0.5);
                 font-size: 14px;
-            }
-
-            .c-item {
-                display: flex;
-                margin-bottom: 10px;
             }
 
             a {

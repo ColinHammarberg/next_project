@@ -19,8 +19,8 @@ export default function Footer({ data }) {
                     </div>
                 </div>
                 <div className="col right">
-                    <a href="/Terms" className="text">Terms & Conditions</a>
-                    <a href="/Contact" className="text">Contact Us</a>
+                    <a href="/" className="text">Terms & Conditions</a>
+                    <a href="/" className="text">Contact Us</a>
                 </div>
             </div>
         </div>

@@ -82,7 +82,7 @@ class ConfirmOrder extends PureComponent {
       <Dialog className="confirm-order" open maxWidth="sm">
         <DialogContent className="dialog-content">
           <h1 className="title">Confirm Order</h1>
-          <p>Are you sure that you would like to place you order?</p>
+          <p>Are you sure that you would like to place the order?</p>
         </DialogContent>
         <div className="order-btn">
           <CustomButton

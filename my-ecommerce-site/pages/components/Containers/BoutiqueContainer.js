@@ -5,8 +5,7 @@ export default function BoutiqueContainer({ data }) {
   const headerDetails = data?.allBoutiques[0];
 
   if (!headerDetails) {
-    // Handle the case when headerDetails is undefined or null
-    return null; // Or you can display a loading state or an error message
+    return null;
   }
 
   return (
