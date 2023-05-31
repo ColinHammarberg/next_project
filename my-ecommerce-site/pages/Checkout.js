@@ -43,7 +43,7 @@ export default function CheckOut() {
       setOrderDetails({ cartItems, cartValueTotal });
       await new Promise((resolve) => setTimeout(resolve, 3500));
       router.push({
-        pathname: '/Confirmation',
+        pathname: '/confirmation',
       });
       setCartItems([]);
       setIsLoading(false);
