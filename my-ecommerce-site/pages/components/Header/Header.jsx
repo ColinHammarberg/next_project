@@ -17,7 +17,7 @@ export default function Header({ data }) {
     },
     {
       text: 'Shop Wines',
-      href: '/products',
+      href: '/productspage',
     },
     // {
     //   text: 'About Us',
@@ -45,7 +45,7 @@ export default function Header({ data }) {
           <div className="cart">
             <IconButton
               disabled={cartItems?.length <= 0}
-              onClick={() => handleNavigation('/checkout')}
+              onClick={() => handleNavigation('/checkoutpage')}
               className={cartItems?.length > 0 && 'active'}
             >
               <ShoppingCartIcon />
